@@ -6,7 +6,7 @@ module.exports = {
   devtool: 'inline-source-map',
 
   entry: {
-    app: path.resolve(__dirname, 'src', 'index.js'),
+    bundle: path.resolve(__dirname, 'src', 'index.js'),
   },
 
   output: {
@@ -45,6 +45,4 @@ module.exports = {
       },
     ],
   },
-
-  watch: true,
 };
