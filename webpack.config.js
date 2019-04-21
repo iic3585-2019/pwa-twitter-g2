@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
 
@@ -17,12 +18,16 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src', 'index.html'),
     }),
+    new ServiceWorkerWebpackPlugin({
+      entry: path.join(__dirname, 'src', 'worker.js'),
+    }),
     new WebpackPwaManifest({
       name: 'My Progressive Web App',
       short_name: 'MyPWA',
       description: 'My awesome Progressive Web App!',
       background_color: '#ffffff',
       crossorigin: 'use-credentials',
+      theme_color: 'red',
       icons: [
         {
           src: path.resolve(

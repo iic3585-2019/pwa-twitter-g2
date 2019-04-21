@@ -58,22 +58,6 @@
       </div>
     </div>
   </div>
-
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function () {
-        navigator.serviceWorker.register('sw.js').then(function (registration) {
-          console.log('Registered succesfully');
-        }, function (error) {
-          console.log('Registration failed', error);
-        }).catch(function (error) {
-          console.log(error);
-        });
-      });
-    } else {
-      console.log('Service Worker is not supported');
-    }
-  </script>
 </body>
 
 </html>
