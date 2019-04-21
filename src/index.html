@@ -5,13 +5,17 @@
   <title>Twitter</title>
 
   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, user-scalable=no">
+
+  <!-- Manifest -->
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Entry -->
+  <script type="text/javascript" src="http://192.168.1.41:8080/app.js"></script>
 
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  <!-- Entry -->
-  <script type="text/javascript" src="http://localhost:8080/app.js"></script>
 </head>
 
 <body>
@@ -60,6 +64,22 @@
       </div>
     </div>
   </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('sw.js').then(function (registration) {
+          console.log('Registered succesfully');
+        }, function (error) {
+          console.log('Registration failed', error);
+        }).catch(function (error) {
+          console.log(error);
+        });
+      });
+    } else {
+      console.log('Service Worker is not supported');
+    }
+  </script>
 </body>
 
 </html>
