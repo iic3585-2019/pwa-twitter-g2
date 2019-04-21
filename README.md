@@ -8,6 +8,8 @@
 [sudo] yarn lint
 ```
 
+> To enter from a mobile device use "http://YOUR_IP:8080" (e.g. 192.168.1.41:8080)
+
 # Firebase deployment
 
 ```bash
@@ -22,6 +24,4 @@ firebase login
 firebase deploy
 ```
 
-https://firebase.google.com/docs/hosting/deploying?hl=es-419
-https://console.firebase.google.com/u/0/project/pwa-twitter-4ddd4/hosting/main?hl=es-419&pli=1
-https://firebase.google.com/docs/hosting/
+> To enter from a mobile device use "https://pwa-twitter-4ddd4.firebaseapp.com/"
