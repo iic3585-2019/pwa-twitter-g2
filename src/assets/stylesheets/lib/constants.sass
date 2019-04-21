@@ -1,0 +1,51 @@
+// Colors
+$c-black: #000000
+$c-white: #FFFFFF
+
+$c-primary: #F13512
+$c-green: #4caf50
+$c-red: #f44336
+$c-yellow: #ffeb3b
+$c-gray-0: #D4D4D4
+$c-gray-1: #757575
+
+$c-text: #212529
+$c-background: #FAFAFA
+$c-scrollbar: #37474f
+
+$c-national: #0ECAED
+$c-regional: #F13512
+
+@function c-gray($value)
+  @if $value == 50
+    @return #FAFAFA
+  @else if $value == 100
+    @return #F5F5F5
+  @else if $value == 200
+    @return #EEEEEE
+  @else if $value == 300
+    @return #E0E0E0
+  @else if $value == 400
+    @return #BDBDBD
+  @else if $value == 500
+    @return #9E9E9E
+  @else if $value == 600
+    @return #757575
+  @else if $value == 700
+    @return #616161
+  @else if $value == 800
+    @return #424242
+  @else if $value == 900
+    @return #212121
+
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900)
+
+$f-family-primary: 'Lato'
+
+$f-size-sm: 12px
+$f-size-md: 16px
+$f-size-lg: 18px
+$f-size-xl: 24px
+
+$f-size-icon: 20px

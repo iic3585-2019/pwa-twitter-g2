@@ -1,0 +1,176 @@
+=background-image
+  background-position: center
+  background-size: cover
+
+=border-top($color, $width: 1px, $style: solid)
+  border-top: $width $style $color
+
+=border-right($color, $width: 1px, $style: solid)
+  border-right: $width $style $color
+
+=border-bottom($color, $width: 1px, $style: solid)
+  border-bottom: $width $style $color
+
+=border-left($color, $width: 1px, $style: solid)
+  border-left: $width $style $color
+
+=border-bottom-dashed($color, $width: 3px, $height: 2px)
+  background-image: linear-gradient(to right, $color 20%, $c-white 0%)
+  background-position: bottom
+  background-size: $width $height
+  background-repeat: repeat-x
+
+=border-top-radius($border-radius, $only: false)
+  border-top-left-radius: $border-radius
+  border-top-right-radius: $border-radius
+
+  @if $only
+    border-bottom-right-radius: 0
+    border-bottom-left-radius: 0
+
+=border-right-radius($border-radius, $only: false)
+  border-top-right-radius: $border-radius
+  border-bottom-right-radius: $border-radius
+
+  @if $only
+    border-top-left-radius: 0
+    border-bottom-left-radius: 0
+
+=border-bottom-radius($border-radius, $only: false)
+  border-bottom-right-radius: $border-radius
+  border-bottom-left-radius: $border-radius
+
+  @if $only
+    border-top-left-radius: 0
+    border-top-right-radius: 0
+
+=border-left-radius($border-radius, $only: false)
+  border-top-left-radius: $border-radius
+  border-bottom-left-radius: $border-radius
+
+  @if $only
+    border-top-right-radius: 0
+    border-bottom-right-radius: 0
+
+=browser($browsers: Mozilla)
+  @each $browser in $browsers
+    html[data-browser*='#{$browser}'] &
+      @content
+
+=canvas($border-radius: 2px, $background-color: $c-white)
+  border-radius: $border-radius
+  background-color: $background-color
+
+=circle($size)
+  width: $size
+  height: $size
+  border-radius: 50%
+  line-height: $size
+
+  +browser
+    text-indent: -1px
+
+=d-flex($align: null, $justify: null)
+  display: flex
+
+  @if $align
+    align-items: $align
+
+  @if $justify
+    justify-content: $justify
+
+=icon($size, $margin-right: null, $margin-left: null)
+  width: $size
+  height: $size
+  font-size: $size
+  line-height: $size
+
+  @if $margin-right
+    margin-right: $margin-right
+
+  @if $margin-left
+    margin-left: $margin-left
+
+=p-absolute($z-index: null, $a: null, $b: null, $c: null, $d: null)
+  position: absolute
+
+  +position($a, $b, $c, $d)
+
+  @if $z-index
+    z-index: $z-index
+
+=p-fixed($z-index: null, $a: null, $b: null, $c: null, $d: null)
+  position: fixed
+
+  +position($a, $b, $c, $d)
+
+  @if $z-index
+    z-index: $z-index
+
+=p-relative($z-index: null, $a: null, $b: null, $c: null, $d: null)
+  position: relative
+
+  +position($a, $b, $c, $d)
+
+  @if $z-index
+    z-index: $z-index
+
+=position($a: null, $b: null, $c: null, $d: null)
+  @if not ($a == null) and $b == null and $c == null and $d == null
+    top: $a
+    right: $a
+    bottom: $a
+    left: $a
+  @else if not ($a == null and $b == null) and $c == null and $d == null
+    top: $a
+    right: $b
+    bottom: $a
+    left: $b
+  @else if not ($a == null and $b == null and $c == null) and $d == null
+    top: $a
+    right: $b
+    bottom: $c
+    left: $b
+  @else
+    top: $a
+    right: $b
+    bottom: $c
+    left: $d
+
+=size($size)
+  width: $size
+  height: $size
+
+=text-height($value)
+  height: $value
+  line-height: $value
+
+=user-select($value)
+  -webkit-user-select: $value
+  -moz-user-select: $value
+  -ms-user-select: $value
+  user-select: $value
+
+=sweet-scrollbar
+  &::-webkit-scrollbar
+    width: 8px
+
+    background: rgba($c-scrollbar, 0)
+    border-radius: 100px
+
+  &::-webkit-scrollbar:hover 
+    background: rgba($c-scrollbar, .09);
+
+  &::-webkit-scrollbar-thumb:vertical 
+    background: rgba($c-scrollbar, .5)
+    border-radius: 100px
+
+  &::-webkit-scrollbar-thumb:vertical:active 
+    background: rgba($c-scrollbar, .61)
+    border-radius: 100px
+
+=no-scrollbar
+  &::-webkit-scrollbar
+    width: 0px
+
+    background: transparent
