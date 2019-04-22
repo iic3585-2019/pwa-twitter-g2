@@ -35,22 +35,21 @@ const snapshots$ = Observable.create(observer =>
 );
 
 const tweets$ = snapshots$.pipe(
-  map(snapshot => console.log(snapshot.docs.map(s => s.data())))
+  map(snapshot => snapshot.docs.map(s => s.data()))
 );
 
-tweets$.subscribe(drawTweets);
-
 const drawTweets = tweets => {
-  // vaciar timeline
-  // for tweet in tweet, dibujar tweet dentro de timeline
+  console.log(tweets);
 };
+
+tweets$.subscribe(drawTweets);
 
 const pushComment = (tweet_id, body) => {
   return db.collection('comments').add({ tweet_id: '1', body });
 };
 
 const pushTweet = body => {
-  return db.collection("tweets").add({ body , likes: 0, created_at: new Date()});
+  return db.collection("tweets").add({ body , likes: 0, created_at: firebase.firestore.Timestamp.fromDate(new Date())});
 };
 
 // Create Tweet
