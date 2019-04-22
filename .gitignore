@@ -60,4 +60,7 @@ typings/
 # next.js build output
 .next
 
-.idea
+# Mac Os X files
+.DS_Store
+
+build/
