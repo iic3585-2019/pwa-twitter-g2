@@ -6,8 +6,6 @@ import { map } from 'rxjs/operators';
 
 import runtime from 'serviceworker-webpack-plugin/lib/runtime';
 
-import _ from 'lodash';
-
 // Stylesheets
 import '@/assets/stylesheets/index.sass';
 

@@ -1,4 +1,5 @@
 import { connectComment, connectInput } from '@/connect';
+
 import mustache from 'mustache';
 
 const getTemplateById = id => {
@@ -12,19 +13,20 @@ const HTMLToElement = html => {
   return template.content.firstChild;
 };
 
-export const renderInput = placeholder => {
-  const template = getTemplateById('template-0');
+export const renderTweetInput = placeholder => {
+  const template = getTemplateById('tweet-input-template');
   const render = mustache.render(template, { placeholder });
   const element = HTMLToElement(render);
 
   const input = element.querySelector('input');
+
   connectInput(input);
 
   return element;
 };
 
 export const renderTweet = tweet => {
-  const template = getTemplateById('template-1');
+  const template = getTemplateById('tweet-template');
   const render = mustache.render(template, tweet);
   const element = HTMLToElement(render);
 
@@ -40,10 +42,10 @@ export const renderTweet = tweet => {
 export const renderTimeline = tweets => {
   const timeline = document.getElementById('timeline');
 
-  const input = renderInput('Wena men');
-  timeline.appendChild(input);
+  const tweetInput = renderTweetInput('Wena men');
+  timeline.appendChild(tweetInput);
 
-  tweets.map(renderTweet).forEach(tweet => {
-    timeline.appendChild(tweet);
+  tweets.forEach(tweet => {
+    timeline.appendChild(renderTweet(tweet));
   });
 };
