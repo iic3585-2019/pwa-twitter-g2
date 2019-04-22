@@ -18,7 +18,7 @@
       <img src="assets/images/logo.svg" class="logo" />
     </div>
 
-    <div class="timeline padding-0">
+    <div id="timeline" class="timeline padding-0">
       <div class="tweet-box v-padding-0 h-padding-1">
         <input type="text" placeholder="¿En qué estás pensando?">
       </div>
@@ -35,8 +35,8 @@
 
         <div class="actions d-flex-r d-flex-a-c v-padding-1">
           <i class="material-icons md-36 comment-btn">chat_bubble_outline</i>
-          <i class="material-icons md-36">repeat</i>
-          <i class="material-icons md-36">favorite_border</i>
+          <i class="material-icons md-36 retweet-btn">repeat</i>
+          <i class="material-icons md-36 like-btn">favorite_border</i>
         </div>
       </div>
 
@@ -52,12 +52,24 @@
 
         <div class="actions d-flex-r d-flex-a-c v-padding-1">
           <i class="material-icons md-36 comment-btn">chat_bubble_outline</i>
-          <i class="material-icons md-36">repeat</i>
-          <i class="material-icons md-36">favorite_border</i>
+          <i class="material-icons md-36 retweet-btn">repeat</i>
+          <i class="material-icons md-36 like-btn">favorite_border</i>
         </div>
       </div>
     </div>
   </div>
+
+  <script id="template-1" type="text/html">
+      <div class="tweet-box h-padding-1 padding-t-1">
+        {{ body }}
+
+        <div class="actions d-flex-r d-flex-a-c v-padding-1">
+          <i class="material-icons md-36 comment-btn">chat_bubble_outline</i>
+          <i class="material-icons md-36 retweet-btn">repeat</i>
+          <i class="material-icons md-36 like-btn">favorite_border</i>
+        </div>
+      </div>
+  </script>
 </body>
 
 </html>
