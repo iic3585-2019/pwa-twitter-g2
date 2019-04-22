@@ -32,7 +32,7 @@ const snapshots$ = Observable.create(observer =>
 );
 
 const tweets$ = snapshots$.pipe(
-  map(snapshot => snapshot.docs.map(s => s.data()))
+  map(snapshot => console.log(snapshot.docs.map(s => s.data())))
 );
 
 tweets$.subscribe(drawTweets);
@@ -47,7 +47,7 @@ const pushComment = (tweet_id, body) => {
 };
 
 const pushTweet = body => {
-  return ref.push({ body, likes });
+  return db.collection("tweets").add({ body , likes: 0, created_at: new Date()});
 };
 
 // Create Tweet
@@ -67,7 +67,7 @@ const button = document.querySelector('.comment-btn');
 fromEvent(button, 'click').subscribe(() => {
   const body = prompt('Cuerpo del comentario');
 
-  pushComment('hola', body).then(a => {
-    console.log(a);
+  pushComment('tweet_id', body).then(comment => {
+    console.log(comment);
   });
 });
