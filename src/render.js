@@ -1,4 +1,4 @@
-import { connectComment } from '@/connect';
+import { connectComment, connectInput } from '@/connect';
 import mustache from 'mustache';
 
 const getTemplateById = id => {
@@ -10,6 +10,17 @@ const HTMLToElement = html => {
   template.innerHTML = html.trim();
 
   return template.content.firstChild;
+};
+
+export const renderInput = placeholder => {
+  const template = getTemplateById('template-0');
+  const render = mustache.render(template, { placeholder });
+  const element = HTMLToElement(render);
+
+  const input = element.querySelector('input');
+  connectInput(input);
+
+  return element;
 };
 
 export const renderTweet = tweet => {
@@ -28,6 +39,9 @@ export const renderTweet = tweet => {
 
 export const renderTimeline = tweets => {
   const timeline = document.getElementById('timeline');
+
+  const input = renderInput('Wena men');
+  timeline.appendChild(input);
 
   tweets.map(renderTweet).forEach(tweet => {
     timeline.appendChild(tweet);

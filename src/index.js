@@ -1,4 +1,3 @@
-import { connectInput } from '@/connect';
 import { db } from '@/db';
 import { renderTimeline } from '@/render';
 
@@ -30,5 +29,3 @@ const tweets$ = snapshots$.pipe(
 );
 
 tweets$.subscribe(renderTimeline);
-
-connectInput();

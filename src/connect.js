@@ -13,10 +13,10 @@ const pushTweet = body => {
 
 const getKeyCode = event => event.keycode || event.which;
 
-export const connectInput = () => {
+export const connectInput = element => {
   fromEvent(document, 'keyup').subscribe(event => {
     if (getKeyCode(event) === 13) {
-      const body = document.querySelector('input').value;
+      const body = element.value;
 
       pushTweet(body);
     }
