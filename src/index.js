@@ -3,7 +3,7 @@ import { fromEvent } from 'rxjs';
 
 // Firebase setup
 import firebase from 'firebase/app';
-import 'firebase/database';
+import 'firebase/firestore';
 
 // Stylesheets
 import '@/assets/stylesheets/index.sass';
@@ -23,26 +23,24 @@ if ('serviceWorker' in navigator) {
   const registration = runtime.register();
 }
 
-console.log("aca se muestra toda la database");
-const database = firebase.database();
-
-const ref = database.ref('tweets');
-
-console.log("los tweets");
-
-console.log(ref);
+const db = firebase.firestore();
 
 const getKeyCode = (event) => event.keycode || event.which;
+
 //Create Tweet
 fromEvent(document, 'keyup')
   .subscribe((event) => {
     if (getKeyCode(event) === 13){
       const text = document.querySelector('input').value;
-      const data = {
+      db.collection("tweets").add({
         body: text,
-        likes: 0
-      };
-      ref.push(data);
-      console.log(text);
+        likes: 0,
+      })
+      .then(function(docRef) {
+          console.log("Tweet publicado");
+      })
+      .catch(function(error) {
+          console.error("Error: ", error);
+      });
     }
   });
