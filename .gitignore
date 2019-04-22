@@ -64,4 +64,5 @@ typings/
 .DS_Store
 
 build/
+
 .firebase/
