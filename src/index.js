@@ -7,6 +7,9 @@ import '@/assets/stylesheets/index.sass';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
+// Stylesheets
+import '@/assets/stylesheets/index.sass';
+
 const config = {
   apiKey: 'AIzaSyDPyYczw1sWppmj_MNqQAyROTgydtd1aN4',
   authDomain: 'pwa-twitter-4ddd4.firebaseapp.com',
