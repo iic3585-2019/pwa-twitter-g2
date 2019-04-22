@@ -5,13 +5,17 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import runtime from 'serviceworker-webpack-plugin/lib/runtime';
+import firebase from 'firebase/app';
+import 'firebase/messaging';
 
 // Stylesheets
 import '@/assets/stylesheets/index.sass';
 
 // Service Worker setup
 if ('serviceWorker' in navigator) {
-  const registration = runtime.register();
+  runtime.register().then(registration => {
+    firebase.messaging().useServiceWorker(registration);
+  });
 }
 
 // Observables =================================================================
@@ -27,3 +31,7 @@ const tweets$ = snapshots$.pipe(
 );
 
 tweets$.subscribe(renderTimeline);
+
+// TODO:
+// - Guardar tweets en cache
+// - Cuando se crea un tweet, se envia una notificación
