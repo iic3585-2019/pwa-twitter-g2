@@ -2,6 +2,7 @@ import { Observable, fromEvent } from 'rxjs';
 import { map } from 'rxjs/operators';
 import runtime from 'serviceworker-webpack-plugin/lib/runtime';
 import '@/assets/stylesheets/index.sass';
+import mustache from 'mustache';
 
 // Firebase setup
 import firebase from 'firebase/app';
@@ -35,12 +36,24 @@ const tweets$ = snapshots$.pipe(
   map(snapshot => snapshot.docs.map(s => s.data()))
 );
 
-tweets$.subscribe(drawTweets);
-
-const drawTweets = tweets => {
-  // vaciar timeline
-  // for tweet in tweet, dibujar tweet dentro de timeline
+const getTemplateById = id => {
+  return document.getElementById(id).innerHTML;
 };
+
+const renderTweet = tweet => {
+  const template = getTemplateById('template-1');
+  const render = mustache.render(template, tweet);
+
+  return render;
+};
+
+const renderTimeline = tweets => {
+  const render = tweets.map(renderTweet);
+
+  return render;
+};
+
+tweets$.subscribe(renderTimeline);
 
 const pushComment = (tweet_id, body) => {
   return db.collection('comments').add({ tweet_id: '1', body });
