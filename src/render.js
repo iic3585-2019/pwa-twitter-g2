@@ -50,3 +50,7 @@ export const renderTimeline = tweets => {
 
   tweets.forEach(tweet => timeline.appendChild(renderTweet(tweet)));
 };
+
+export const render = state => {
+  renderTimeline(state.tweets);
+};

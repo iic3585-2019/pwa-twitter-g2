@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import '@/assets/stylesheets/index.sass';
 
 import { db } from '@/db';
-import { renderTimeline } from '@/render';
+import { render } from '@/render';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -35,9 +35,9 @@ const snapshots$ = Observable.create(observer =>
     .orderBy('created_at')
     .onSnapshot(observer)
 );
-
 const tweets$ = snapshots$.pipe(
   map(snapshot => snapshot.docs.map(s => s.data()))
 );
+const state$ = tweets$.pipe(map(tweets => ({ tweets })));
 
-tweets$.subscribe(renderTimeline);
+tweets$.subscribe(render);
