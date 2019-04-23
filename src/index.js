@@ -20,18 +20,18 @@ if ('serviceWorker' in navigator) {
 }
 
 const askNotifications = async () => {
-  try{
+  try {
     const messaging = firebase.messaging();
     await messaging.requestPermission();
     const token = await messaging.getToken();
     console.log(token);
     return token;
-  }  catch (error) {
+  } catch (error) {
     console.error(error);
   }
-}
+};
 
-console.log("este es el token");
+console.log('este es el token');
 const token = askNotifications();
 console.log(token);
 
@@ -48,7 +48,6 @@ const tweets$ = snapshots$.pipe(
 );
 
 tweets$.subscribe(renderTimeline);
-
 
 // TODO:
 // - Guardar tweets en cache
