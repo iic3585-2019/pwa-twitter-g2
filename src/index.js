@@ -40,4 +40,4 @@ const tweets$ = snapshots$.pipe(
 );
 const state$ = tweets$.pipe(map(tweets => ({ tweets })));
 
-tweets$.subscribe(render);
+state$.subscribe(render);
