@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 import runtime from 'serviceworker-webpack-plugin/lib/runtime';
 import firebase from 'firebase/app';
 import 'firebase/messaging';
+import 'babel-polyfill';
 
 // Stylesheets
 import '@/assets/stylesheets/index.sass';
@@ -17,6 +18,22 @@ if ('serviceWorker' in navigator) {
     firebase.messaging().useServiceWorker(registration);
   });
 }
+
+const askNotifications = async () => {
+  try{
+    const messaging = firebase.messaging();
+    await messaging.requestPermission();
+    const token = await messaging.getToken();
+    console.log(token);
+    return token;
+  }  catch (error) {
+    console.error(error);
+  }
+}
+
+console.log("este es el token");
+const token = askNotifications();
+console.log(token);
 
 // Observables =================================================================
 const snapshots$ = Observable.create(observer =>
@@ -31,6 +48,7 @@ const tweets$ = snapshots$.pipe(
 );
 
 tweets$.subscribe(renderTimeline);
+
 
 // TODO:
 // - Guardar tweets en cache

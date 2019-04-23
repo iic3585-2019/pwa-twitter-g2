@@ -6,6 +6,28 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 
 const pushTweet = body => {
+
+  const notification = {
+    notification : {
+      body
+    },
+    to : 'f9VC9GG3ojs:APA91bFLPE900eNcrYyWhqIHe0khGHHxy4KmsTqM2WYceSwloPILPVLEAB4QekEPC91l9CFMn7KQb8U_yCl108NBVkJWSMsAfaiKY7e8lS3uK19P9DJ3nAefNQ9X8DQWh5mDDGYIYvYd'
+  }
+  fetch('https://fcm.googleapis.com/fcm/send', {
+    method: 'POST',
+    body: JSON.stringify(notification),
+    headers:{
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'http://localhost:8080',
+      'Authorization': 'key=AAAAwCk0ixQ:APA91bEm5zrDh3CE9MLXP5QcBBUxpFL3ZPuKTo6QB2fAMSyRjfrBAJJZQ9gjws4PJGmCf_QFAsoMtH_LJruSBeLbiIxbtDLvj3ujb9QSAYRqeTFPyEUB767Hdn3bvReUSQ1xirKGvnhY'
+    }
+  }).then(
+    console.log("notificacion")
+  );
+
+
+
+
   return db.collection('tweets').add({
     body,
     likes: 0,
