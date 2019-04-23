@@ -14,7 +14,6 @@
     "@babel/preset-env": "^7.4.2",
     "@babel/register": "^7.4.0",
     "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^2.0.1",
     "css-loader": "^2.1.1",
     "eslint": "^5.15.3",
@@ -36,6 +35,8 @@
     "webpack-pwa-manifest": "^4.0.0"
   },
   "dependencies": {
+    "babel-loader": "^8.0.5",
+    "babel-polyfill": "^6.26.0",
     "firebase": "^5.10.0",
     "lodash": "^4.17.11",
     "mustache": "^3.0.1",
