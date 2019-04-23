@@ -27,8 +27,6 @@ if (workbox) {
       cacheName: 'css-cache',
     })
   );
-
-  workbox.routing.registerRoute(/\.js$/, new workbox.strategies.NetworkFirst());
 }
 
 // Firebase messaging
