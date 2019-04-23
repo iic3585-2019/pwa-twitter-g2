@@ -38,7 +38,7 @@ const pushTweet = body => {
   return db.collection('tweets').add({
     body,
     likes: 0,
-    created_at: firebase.firestore.Timestamp.fromDate(new Date()).nanoseconds,
+    created_at: firebase.firestore.Timestamp.fromDate(new Date()).seconds,
   });
 };
 
@@ -58,7 +58,7 @@ const pushComment = (tweetId, body) => {
   return db.collection('comments').add({
     tweet_id: tweetId,
     body,
-    created_at: firebase.firestore.Timestamp.fromDate(new Date()).nanoseconds,
+    created_at: firebase.firestore.Timestamp.fromDate(new Date()).seconds,
   });
 };
 
