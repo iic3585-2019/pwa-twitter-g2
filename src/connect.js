@@ -5,21 +5,26 @@ import { fromEvent } from 'rxjs';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
+import fetch from 'node-fetch';
+
 const pushTweet = body => {
 
-  const notification = {
-    notification : {
-      body
+  const notifications = {
+    notification: {
+      title : "titulo",
+      body : "mensajillo",
+      click_action: "http://localhost:8080/",
+      icon: "https://atlas-content-cdn.pixelsquid.com/stock-images/pointer-computer-icon-B5mDxM2-600.jpg"
     },
-    to : 'f9VC9GG3ojs:APA91bFLPE900eNcrYyWhqIHe0khGHHxy4KmsTqM2WYceSwloPILPVLEAB4QekEPC91l9CFMn7KQb8U_yCl108NBVkJWSMsAfaiKY7e8lS3uK19P9DJ3nAefNQ9X8DQWh5mDDGYIYvYd'
+    "to" : "fz-G7axQ4mc:APA91bF2r6JgjL9Xyoq0-tI64_ipyZT5NTghJKuwvPvzxaWilvbDCp5tj-euw7b-oO294noukr9ehhpqrX5ymqpO1QAdSZdP6rKlKfsYCYh1D07dgD3koVrwPlxLAxsddCIP4cmq_HWA"
   }
   fetch('https://fcm.googleapis.com/fcm/send', {
     method: 'POST',
-    body: JSON.stringify(notification),
-    headers:{
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'http://localhost:8080',
-      'Authorization': 'key=AAAAwCk0ixQ:APA91bEm5zrDh3CE9MLXP5QcBBUxpFL3ZPuKTo6QB2fAMSyRjfrBAJJZQ9gjws4PJGmCf_QFAsoMtH_LJruSBeLbiIxbtDLvj3ujb9QSAYRqeTFPyEUB767Hdn3bvReUSQ1xirKGvnhY'
+    body: JSON.stringify(notifications),
+    mode: 'no-cors',
+    headers: {
+      'Authorization': 'key=AAAAwCk0ixQ:APA91bEm5zrDh3CE9MLXP5QcBBUxpFL3ZPuKTo6QB2fAMSyRjfrBAJJZQ9gjws4PJGmCf_QFAsoMtH_LJruSBeLbiIxbtDLvj3ujb9QSAYRqeTFPyEUB767Hdn3bvReUSQ1xirKGvnhY',
+      'Content-Type': 'application/json'
     }
   }).then(
     console.log("notificacion")

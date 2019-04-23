@@ -40,6 +40,7 @@
     "firebase": "^5.10.0",
     "lodash": "^4.17.11",
     "mustache": "^3.0.1",
+    "node-fetch": "^2.3.0",
     "rxjs": "^6.4.0",
     "serviceworker-webpack-plugin": "^1.0.1"
   }
