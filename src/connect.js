@@ -5,32 +5,47 @@ import { fromEvent } from 'rxjs';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
-import fetch from 'node-fetch';
+import axios from 'axios';
 
 const pushTweet = body => {
 
   const notifications = {
     notification: {
-      title : "titulo",
-      body : "mensajillo",
-      click_action: "http://localhost:8080/",
+      title : "Hola sebi",
+      body : "saludos!",
+      click_action: "https://pwa-twitter-4ddd4.firebaseapp.com/",
       icon: "https://atlas-content-cdn.pixelsquid.com/stock-images/pointer-computer-icon-B5mDxM2-600.jpg"
     },
-    "to" : "fz-G7axQ4mc:APA91bF2r6JgjL9Xyoq0-tI64_ipyZT5NTghJKuwvPvzxaWilvbDCp5tj-euw7b-oO294noukr9ehhpqrX5ymqpO1QAdSZdP6rKlKfsYCYh1D07dgD3koVrwPlxLAxsddCIP4cmq_HWA"
+    "to" : "dHqTyeIFZKQ:APA91bEKygiNIXkGzKlWcvRJw2PKW5eCLOrlOo6M1mj9RrtZYl72vsbOtNmviJ1vEjv41cV6C3SUQ0EVEW6_x4sa8iLYjbKpk85rK4o4q6Y4jrT-hz3R9DOZQCCpTxHspk4yzGf-SIe1"
   }
-  fetch('https://fcm.googleapis.com/fcm/send', {
-    method: 'POST',
-    body: JSON.stringify(notifications),
-    mode: 'no-cors',
+
+  // axios({
+  //   method: 'post',
+  //   url: 'https://fcm.googleapis.com/fcm/send',
+  //   data: JSON.stringify(notifications),
+  //   headers: {
+  //     'Authorization': 'key=AAAAwCk0ixQ:APA91bEm5zrDh3CE9MLXP5QcBBUxpFL3ZPuKTo6QB2fAMSyRjfrBAJJZQ9gjws4PJGmCf_QFAsoMtH_LJruSBeLbiIxbtDLvj3ujb9QSAYRqeTFPyEUB767Hdn3bvReUSQ1xirKGvnhY',
+  //     'Content-Type': 'application/json'
+  //   }
+  // }).then(
+  //   console.log("notificacion")
+  // ).catch(err => console.log(err));
+
+  // console.log("despues de notificar");
+
+  axios.post('https://fcm.googleapis.com/fcm/send',
+    notifications, {
     headers: {
       'Authorization': 'key=AAAAwCk0ixQ:APA91bEm5zrDh3CE9MLXP5QcBBUxpFL3ZPuKTo6QB2fAMSyRjfrBAJJZQ9gjws4PJGmCf_QFAsoMtH_LJruSBeLbiIxbtDLvj3ujb9QSAYRqeTFPyEUB767Hdn3bvReUSQ1xirKGvnhY',
       'Content-Type': 'application/json'
-    }
-  }).then(
-    console.log("notificacion")
-  );
-
-
+    },
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 
 
   return db.collection('tweets').add({
