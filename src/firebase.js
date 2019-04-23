@@ -22,6 +22,14 @@ firebase.initializeApp(config);
 export const db = firebase.firestore();
 export const messaging = firebase.messaging();
 
+export const fetchMessagingToken = async () => {
+  const messaging = firebase.messaging();
+  await messaging.requestPermission();
+  const token = await messaging.getToken();
+
+  return token;
+};
+
 const buildNotification = (title, body, to) => {
   const icon =
     'https://atlas-content-cdn.pixelsquid.com/stock-images/pointer-computer-icon-B5mDxM2-600.jpg';

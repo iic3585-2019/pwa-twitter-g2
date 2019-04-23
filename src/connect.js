@@ -1,4 +1,4 @@
-import { pushComment, pushNotification, pushTweet } from '@/db';
+import { pushComment, pushNotification, pushTweet } from '@/firebase';
 
 import { fromEvent, Subject } from 'rxjs';
 
