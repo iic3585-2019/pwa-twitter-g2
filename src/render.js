@@ -41,11 +41,10 @@ export const renderTweet = tweet => {
 
 export const renderTimeline = tweets => {
   const timeline = document.getElementById('timeline');
+  while (timeline.firstChild) timeline.removeChild(timeline.firstChild); // empty
 
-  const tweetInput = renderTweetInput('Wena men');
+  const tweetInput = renderTweetInput('¿Qué estás pensando?');
   timeline.appendChild(tweetInput);
 
-  tweets.forEach(tweet => {
-    timeline.appendChild(renderTweet(tweet));
-  });
+  tweets.forEach(tweet => timeline.appendChild(renderTweet(tweet)));
 };
