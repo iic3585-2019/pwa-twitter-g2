@@ -40,6 +40,8 @@ export const renderTweet = tweet => {
 };
 
 export const renderTimeline = tweets => {
+  console.log(tweets);
+
   const timeline = document.getElementById('timeline');
   while (timeline.firstChild) timeline.removeChild(timeline.firstChild); // empty
 

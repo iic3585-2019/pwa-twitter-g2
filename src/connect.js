@@ -1,11 +1,11 @@
 import { db } from '@/db';
 
+import axios from 'axios';
+
 import { fromEvent } from 'rxjs';
 
 import firebase from 'firebase/app';
 import 'firebase/firestore';
-
-import axios from 'axios';
 
 const FCM_URI = 'https://fcm.googleapis.com/fcm/send';
 const FCM_KEY =
@@ -38,7 +38,7 @@ const pushTweet = body => {
   return db.collection('tweets').add({
     body,
     likes: 0,
-    created_at: firebase.firestore.Timestamp.fromDate(new Date()),
+    created_at: firebase.firestore.Timestamp.fromDate(new Date()).nanoseconds,
   });
 };
 
@@ -54,17 +54,17 @@ export const connectInput = element => {
   });
 };
 
-const pushComment = (tweet_id, body) => {
+const pushComment = (tweetId, body) => {
   return db.collection('comments').add({
-    tweet_id: '1',
+    tweet_id: tweetId,
     body,
-    created_at: firebase.firestore.Timestamp.fromDate(new Date()),
+    created_at: firebase.firestore.Timestamp.fromDate(new Date()).nanoseconds,
   });
 };
 
 export const connectComment = (element, tweetId) => {
   fromEvent(element, 'click').subscribe(() => {
-    const body = prompt('Cuerpo del comentario');
+    const body = prompt('Comentario');
 
     pushComment(tweetId, body);
   });

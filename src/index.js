@@ -20,7 +20,6 @@ const fetchMessagingToken = async () => {
 };
 
 const token = fetchMessagingToken();
-// console.log(token);
 
 // Service Worker setup
 if ('serviceWorker' in navigator) {

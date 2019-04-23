@@ -23,12 +23,12 @@ module.exports = {
       entry: path.join(__dirname, 'src', 'sw.js'),
     }),
     new WebpackPwaManifest({
-      name: 'My Progressive Web App',
-      short_name: 'MyPWA',
-      description: 'My awesome Progressive Web App!',
-      background_color: '#ffffff',
+      name: 'Twitter',
+      short_name: 'Twitter',
+      description: 'Twitter',
+      background_color: '#1DA1F2',
       crossorigin: 'use-credentials',
-      theme_color: 'red',
+      theme_color: '#1DA1F2',
       icons: [
         {
           src: path.resolve(
