@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -19,7 +20,7 @@ module.exports = {
       template: path.resolve(__dirname, 'src', 'index.html'),
     }),
     new ServiceWorkerWebpackPlugin({
-      entry: path.join(__dirname, 'src', 'worker.js'),
+      entry: path.join(__dirname, 'src', 'sw.js'),
     }),
     new WebpackPwaManifest({
       name: 'My Progressive Web App',
@@ -40,6 +41,9 @@ module.exports = {
           sizes: [96, 128, 192, 256, 384, 512],
         },
       ],
+    }),
+    new WorkboxPlugin.InjectManifest({
+      swSrc: path.join(__dirname, 'src', 'sw.js'),
     }),
   ],
 

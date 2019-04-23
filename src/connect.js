@@ -19,20 +19,19 @@ const pushTweet = body => {
       'dHqTyeIFZKQ:APA91bEKygiNIXkGzKlWcvRJw2PKW5eCLOrlOo6M1mj9RrtZYl72vsbOtNmviJ1vEjv41cV6C3SUQ0EVEW6_x4sa8iLYjbKpk85rK4o4q6Y4jrT-hz3R9DOZQCCpTxHspk4yzGf-SIe1',
   };
 
-  axios
-    .post('https://fcm.googleapis.com/fcm/send', notifications, {
-      headers: {
-        Authorization:
-          'key=AAAAwCk0ixQ:APA91bEm5zrDh3CE9MLXP5QcBBUxpFL3ZPuKTo6QB2fAMSyRjfrBAJJZQ9gjws4PJGmCf_QFAsoMtH_LJruSBeLbiIxbtDLvj3ujb9QSAYRqeTFPyEUB767Hdn3bvReUSQ1xirKGvnhY',
-        'Content-Type': 'application/json',
-      },
-    })
-    .then(function(response) {
-      console.log(response);
-    })
-    .catch(function(error) {
-      console.log(error);
-    });
+  axios.post('https://fcm.googleapis.com/fcm/send', notifications, {
+    headers: {
+      Authorization:
+        'key=AAAAwCk0ixQ:APA91bEm5zrDh3CE9MLXP5QcBBUxpFL3ZPuKTo6QB2fAMSyRjfrBAJJZQ9gjws4PJGmCf_QFAsoMtH_LJruSBeLbiIxbtDLvj3ujb9QSAYRqeTFPyEUB767Hdn3bvReUSQ1xirKGvnhY',
+      'Content-Type': 'application/json',
+    },
+  });
+  // .then(function(response) {
+  //   console.log(response);
+  // })
+  // .catch(function(error) {
+  //   console.log(error);
+  // });
 
   return db.collection('tweets').add({
     body,

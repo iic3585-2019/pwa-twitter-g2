@@ -31,9 +31,9 @@ const askNotifications = async () => {
   }
 };
 
-console.log('este es el token');
+// console.log('este es el token');
 const token = askNotifications();
-console.log(token);
+// console.log(token);
 
 // Observables =================================================================
 const snapshots$ = Observable.create(observer =>
