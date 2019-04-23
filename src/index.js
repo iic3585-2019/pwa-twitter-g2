@@ -11,7 +11,6 @@ import runtime from 'serviceworker-webpack-plugin/lib/runtime';
 
 const token = fetchMessagingToken();
 
-// Service Worker setup
 if ('serviceWorker' in navigator) {
   runtime.register().then(registration => {
     messaging.useServiceWorker(registration);
@@ -25,7 +24,7 @@ const snapshots$ = Observable.create(observer =>
     .onSnapshot(observer)
 );
 const tweets$ = snapshots$.pipe(
-  map(snapshot => snapshot.docs.map(s => s.data()))
+  map(snapshot => snapshot.docs.map(s => ({ tweet_id: s.id, ...s.data() })))
 );
 const state$ = tweets$.pipe(map(tweets => ({ tweets })));
 
