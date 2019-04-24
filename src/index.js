@@ -42,7 +42,7 @@ db.collection('users')
 const snapshots$ = Observable.create(observer =>
   db
     .collection('tweets')
-    .orderBy('created_at')
+    .orderBy('created_at', 'desc')
     .onSnapshot(observer)
 );
 const tweets$ = snapshots$.pipe(
