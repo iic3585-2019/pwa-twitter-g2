@@ -49,12 +49,14 @@ export const pushNotification = (body, token) => {
 };
 
 export const pushTweet = body => {
-  db.collection("users").get().then(function(querySnapshot) {
-    querySnapshot.forEach(function(doc) {
-      const token = doc.data().token
-      pushNotification(body, token);
+  db.collection('users')
+    .get()
+    .then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        const token = doc.data().token;
+        pushNotification(body, token);
+      });
     });
-  });
   return db.collection('tweets').add({
     body,
     likes: 0,

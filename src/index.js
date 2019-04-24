@@ -11,7 +11,7 @@ import runtime from 'serviceworker-webpack-plugin/lib/runtime';
 
 let token;
 
-fetchMessagingToken().then(tok =>{
+fetchMessagingToken().then(tok => {
   token = tok;
 });
 
@@ -21,22 +21,23 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-db.collection("users").get().then(function(querySnapshot) {
-  let docs = 0;
-  let counter = 0;
-  querySnapshot.forEach(function(doc) {
-    counter += 1;
-      if(doc.data().token != token){
+db.collection('users')
+  .get()
+  .then(function(querySnapshot) {
+    let docs = 0;
+    let counter = 0;
+    querySnapshot.forEach(function(doc) {
+      counter += 1;
+      if (doc.data().token != token) {
         docs += 1;
       }
-  });
-  if (docs === counter){
-    db.collection('users').add({
-      token: token
     });
-  }
-});
-
+    if (docs === counter) {
+      db.collection('users').add({
+        token: token,
+      });
+    }
+  });
 
 const snapshots$ = Observable.create(observer =>
   db
