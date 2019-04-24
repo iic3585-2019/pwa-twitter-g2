@@ -49,11 +49,12 @@ export const pushNotification = (body, token) => {
 };
 
 export const pushTweet = body => {
-  const token =
-    'dHqTyeIFZKQ:APA91bEKygiNIXkGzKlWcvRJw2PKW5eCLOrlOo6M1mj9RrtZYl72vsbOtNmviJ1vEjv41cV6C3SUQ0EVEW6_x4sa8iLYjbKpk85rK4o4q6Y4jrT-hz3R9DOZQCCpTxHspk4yzGf-SIe1';
-
-  pushNotification(body, token);
-
+  db.collection("users").get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(doc) {
+      const token = doc.data().token
+      pushNotification(body, token);
+    });
+  });
   return db.collection('tweets').add({
     body,
     likes: 0,
