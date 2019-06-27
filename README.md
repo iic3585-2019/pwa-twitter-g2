@@ -1,7 +1,7 @@
 # Contexto
 Esta aplicación consiste en un twitter en donde al escribir un mensaje y enviarlo se actualiza en la base de datos de firebase y en caso de tener la aplicación en segundo plano llega una notifiacion push. Esta aplicación funciona en todos los navegadores excepto en internet explorer y safari y en modo mobile solo en android.
 
-#Partes interesantes del código
+# Partes interesantes del código
 Lo más destacable es el uso de service worker el cual al correr la aplicación, el navegador lo escucha, la configuración de este se encuentra en src/sw.js
 
 ```bash
@@ -22,7 +22,7 @@ Lo más destacable es el uso de service worker el cual al correr la aplicación,
 ```
 Con esto se enlaza la app de firebase con esta aplicación y se activa el servicio de mensajeria de firebase
 
-#Ejecutar la aplicacion en modo development
+# Ejecutar la aplicacion en modo development
 
 ```bash
 yarn install
@@ -34,7 +34,7 @@ yarn serve
 
 Esto ejecutara la aplicacion en el puerto 8080
 
-#Realizar un deploy
+# Realizar un deploy
 
 ```bash
 yarn build
@@ -48,6 +48,6 @@ firebase login
 firebase deploy
 ```
 
-#Entrar en la aplicación ya montada
+# Entrar en la aplicación ya montada
 
 Basta con ingresar al siguiente link "https://pwa-twitter-4ddd4.firebaseapp.com/" para poder ejecutar la aplicación
